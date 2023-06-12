@@ -1,13 +1,10 @@
-import * as React from "react"
-import {
-  Box,
-  Heading
-} from "@chakra-ui/react"
+import * as React from "react";
+import { Box, Heading } from "@chakra-ui/react";
 
-const App = () => (
+export default function App() {
+  return (
     <Box textAlign="center" fontSize="xl">
-      <Heading>Hello</Heading>
+      <Heading>WebCoin</Heading>
     </Box>
-)
-
-export default App
+  );
+}
