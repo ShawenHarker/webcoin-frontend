@@ -5,7 +5,9 @@ export default function Logo (){
     return (
       <Box>
         <Heading>WebCoin</Heading>
-        <Text>The world's leading cryptocurrency updater</Text>
+        <Text>
+          The world's leading Cryptocurrency updater
+        </Text>
       </Box>
     );
 }
