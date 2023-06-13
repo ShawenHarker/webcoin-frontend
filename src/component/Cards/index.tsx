@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card, Text } from '@chakra-ui/react';
+import { Box, Card, Flex, Text } from '@chakra-ui/react';
 
 interface CardsProps {
   coin: any; 
@@ -7,38 +7,66 @@ interface CardsProps {
 
 const Cards: React.FC<CardsProps> = ({ coin }) => {
   return (
-    <Card>
-      <Text>{coin.symbol}</Text>
-      <Text>Rank: {coin.rank}</Text>
-      <Text>{coin.name}</Text>
-      <div>
-        <div>
-          <Text>Percent change 1h:</Text>
-          <Text>{coin.percent_change_1h}</Text>
-        </div>
-        <div>
-          <Text>Percent change 24h:</Text>
-          <Text>{coin.percent_change_24h}</Text>
-        </div>
-        <div>
-          <Text>Percent change 7d:</Text>
-          <Text>{coin.percent_change_7d}</Text>
-        </div>
-      </div>
-      <div>
-        <Text>{coin.price_usd}</Text>
-        <Text>{coin.price_btc}</Text>
-        <Text>{coin.market_cap_usd}</Text>
-      </div>
-      <div>
-        <Text>{coin.volume24}</Text>
-        <Text>{coin.volume24a}</Text>
-      </div>
-      <div>
-        <Text>{coin.csupply}</Text>
-        <Text>{coin.tsupply}</Text>
-        <Text>{coin.msupply}</Text>
-      </div>
+    <Card
+      style={{
+        margin: 15,
+        padding: 5,
+      }}
+    >
+      <Flex
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 22,
+            fontWeight: 900,
+            fontFamily: "serif",
+            color: "#ff9100",
+          }}
+        >
+          {coin.symbol}
+        </Text>
+        <Box
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
+          <Text>{coin.name}</Text>
+          <Text>Rank: {coin.rank}</Text>
+        </Box>
+        <Box style={{ flexDirection: "row" }}>
+          <Box>
+            <Text>Percent change 1h:</Text>
+            <Text>{coin.percent_change_1h}</Text>
+          </Box>
+          <Box>
+            <Text>Percent change 24h:</Text>
+            <Text>{coin.percent_change_24h}</Text>
+          </Box>
+          <Box>
+            <Text>Percent change 7d:</Text>
+            <Text>{coin.percent_change_7d}</Text>
+          </Box>
+        </Box>
+        <Box style={{ flexDirection: "row" }}>
+          <Text>{coin.price_usd}</Text>
+          <Text>{coin.price_btc}</Text>
+          <Text>{coin.market_cap_usd}</Text>
+        </Box>
+        <Box style={{ flexDirection: "row" }}>
+          <Text>{coin.volume24}</Text>
+          <Text>{coin.volume24a}</Text>
+        </Box>
+        <Box style={{ flexDirection: "row" }}>
+          <Text>{coin.csupply}</Text>
+          <Text>{coin.tsupply}</Text>
+          <Text>{coin.msupply}</Text>
+        </Box>
+      </Flex>
     </Card>
   );
 };

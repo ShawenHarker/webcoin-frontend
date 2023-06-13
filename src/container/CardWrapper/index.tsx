@@ -1,4 +1,4 @@
-import  React, { useEffect } from "react";
+import * as React from "react";
 import { useQuery, gql } from "@apollo/client";
 import { Text } from "@chakra-ui/react";
 import Cards from "../../component/Cards";
@@ -26,8 +26,6 @@ const Get_Coins = gql`
 
 export default function CardWrapper() {
   const { loading, error, data } = useQuery(Get_Coins);
-
-  useEffect(() => console.log(loading, error, data))
 
   if (loading) return <Text>Loading...</Text>;
   if (error) return <Text>Error : {error.message}</Text>;

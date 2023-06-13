@@ -5,7 +5,7 @@ import CardWrapper from '../../container/CardWrapper/index';
 
 export default function Home (){
     return (
-      <Box>
+      <Box flex={1} p={2}>
         <Header />
         <CardWrapper />
       </Box>
