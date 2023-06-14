@@ -6,8 +6,7 @@ import App from "./App";
 import { theme } from "./theme";
 
 const client = new ApolloClient({
-  // uri: "https://webcoin-backend.onrender.com",
-  uri: process.env.REACT_APP_SERVER_URI,
+  uri: process.env.REACT_APP_URI,
   cache: new InMemoryCache(),
 });
 

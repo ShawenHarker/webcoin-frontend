@@ -1,9 +1,6 @@
 import * as React from "react";
 import {
-  Box,
-  Button,
   Table,
-  TableCaption,
   TableContainer,
   Tbody,
   Td,
@@ -14,7 +11,6 @@ import {
 import { theme } from "../../theme";
 
 interface PopUpProps {
-  setTrigger: any;
   markets: any;
   coin: any
 }
