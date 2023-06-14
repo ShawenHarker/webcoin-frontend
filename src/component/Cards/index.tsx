@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Box, Button, Card, Flex, Text } from "@chakra-ui/react";
-import MarketsModal from "../MarketModal";
+import { Box, Button, Card, Flex, Text, useDisclosure } from "@chakra-ui/react";
+import MarketsModal from "../Table";
+import { log } from "console";
+import Modal from "../Modal";
 interface CardsProps {
   coin: any;
 }
@@ -8,23 +10,16 @@ interface CardsProps {
 const Cards: React.FC<CardsProps> = ({ coin }) => {
   const [marketPopUp, setMarketPopUp] = useState(false);
   const [markets, setMarkets] = useState([]);
-  const [error, setError] = useState({})
-
-  let coin_id = coin.id
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [error, setError] = useState({});
+  const [coin_id, setCoin_id] = useState("");
 
   useEffect(() => {
     fetch(`https://api.coinlore.net/api/coin/markets/?id=${coin_id}`)
       .then((response) => response.json())
-      .then((res) => {
-        console.log(res)
-        // setMarkets(res)
-      })
+      .then((data) => setMarkets(data))
       .catch((error) => setError(error));
   }, [coin_id]);
-
-  const handleMarketQuery = () => {
-    return marketPopUp === true ? console.log(coin.name) : null;
-  }
 
   return (
     <Card
@@ -34,30 +29,22 @@ const Cards: React.FC<CardsProps> = ({ coin }) => {
       }}
     >
       <Flex
-        style={{
-          display: "flex",
-          flexDirection: "column",
-        }}
+        flexDirection='column'
       >
         <Text
-          style={{
-            fontSize: 22,
-            fontWeight: 900,
-            fontFamily: "serif",
-            color: "#ff9100",
-          }}
+          fontSize={22}
+          fontWeight={900}
+          fontFamily="serif"
+          color="secondary.600"
         >
           {coin.symbol}
         </Text>
-        <Box
-          style={{
-            flexDirection: "row",
-            justifyContent: "center",
-          }}
+        <Flex
+          justifyContent='space-evenly'
         >
           <Text>{coin.name}</Text>
           <Text>Rank: {coin.rank}</Text>
-        </Box>
+        </Flex>
         <Box style={{ flexDirection: "row" }}>
           <Box>
             <Text>Percent change 1h:</Text>
@@ -88,10 +75,9 @@ const Cards: React.FC<CardsProps> = ({ coin }) => {
         </Box>
         <Button
           onClick={() => {
-          setMarketPopUp(true);
-          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-          handleMarketQuery
-        }}
+            setCoin_id(coin.id);
+            onOpen();
+          }}
           style={{
             backgroundColor: "#6258de",
             color: "#ff9100",
@@ -99,11 +85,10 @@ const Cards: React.FC<CardsProps> = ({ coin }) => {
         >
           Markets
         </Button>
-        <MarketsModal
-          trigger={marketPopUp}
-          setTrigger={setMarketPopUp}
-          markets={markets}
-        />
+
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <MarketsModal setTrigger={setMarketPopUp} markets={markets} coin={coin}/>
+        </Modal>
       </Flex>
     </Card>
   );
