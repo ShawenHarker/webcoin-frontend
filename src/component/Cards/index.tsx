@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Box, Button, Card, Flex, Text, useDisclosure } from "@chakra-ui/react";
+import { Button, Card, Flex, Text, useDisclosure } from "@chakra-ui/react";
 import MarketsModal from "../Table";
-import { log } from "console";
 import Modal from "../Modal";
 interface CardsProps {
   coin: any;
 }
 
 const Cards: React.FC<CardsProps> = ({ coin }) => {
-  const [marketPopUp, setMarketPopUp] = useState(false);
   const [markets, setMarkets] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [error, setError] = useState({});
@@ -85,7 +83,6 @@ const Cards: React.FC<CardsProps> = ({ coin }) => {
 
         <Modal isOpen={isOpen} onClose={onClose}>
           <MarketsModal
-            setTrigger={setMarketPopUp}
             markets={markets}
             coin={coin}
           />
