@@ -15,7 +15,7 @@ const Cards: React.FC<CardsProps> = ({ coin }) => {
   const [coin_id, setCoin_id] = useState("");
 
   useEffect(() => {
-    fetch(`https://api.coinlore.net/api/coin/markets/?id=${coin_id}`)
+    fetch(`${process.env.REACT_APP_MARKET_URL}${coin_id}`)
       .then((response) => response.json())
       .then((data) => setMarkets(data))
       .catch((error) => setError(error));
