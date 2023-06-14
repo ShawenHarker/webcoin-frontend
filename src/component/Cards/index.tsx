@@ -1,11 +1,31 @@
-import * as React from 'react';
-import { Box, Card, Flex, Text } from '@chakra-ui/react';
-
+import React, { useState, useEffect } from "react";
+import { Box, Button, Card, Flex, Text } from "@chakra-ui/react";
+import MarketsModal from "../MarketModal";
 interface CardsProps {
-  coin: any; 
+  coin: any;
 }
 
 const Cards: React.FC<CardsProps> = ({ coin }) => {
+  const [marketPopUp, setMarketPopUp] = useState(false);
+  const [markets, setMarkets] = useState([]);
+  const [error, setError] = useState({})
+
+  let coin_id = coin.id
+
+  useEffect(() => {
+    fetch(`https://api.coinlore.net/api/coin/markets/?id=${coin_id}`)
+      .then((response) => response.json())
+      .then((res) => {
+        console.log(res)
+        // setMarkets(res)
+      })
+      .catch((error) => setError(error));
+  }, [coin_id]);
+
+  const handleMarketQuery = () => {
+    return marketPopUp === true ? console.log(coin.name) : null;
+  }
+
   return (
     <Card
       style={{
@@ -66,6 +86,24 @@ const Cards: React.FC<CardsProps> = ({ coin }) => {
           <Text>{coin.tsupply}</Text>
           <Text>{coin.msupply}</Text>
         </Box>
+        <Button
+          onClick={() => {
+          setMarketPopUp(true);
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          handleMarketQuery
+        }}
+          style={{
+            backgroundColor: "#6258de",
+            color: "#ff9100",
+          }}
+        >
+          Markets
+        </Button>
+        <MarketsModal
+          trigger={marketPopUp}
+          setTrigger={setMarketPopUp}
+          markets={markets}
+        />
       </Flex>
     </Card>
   );
