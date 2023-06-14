@@ -1,13 +1,10 @@
-import * as React from "react"
-import {
-  Box,
-  Heading
-} from "@chakra-ui/react"
+import * as React from "react";
+import Home from "./layouts/HomeLayout";
 
-const App = () => (
-    <Box textAlign="center" fontSize="xl">
-      <Heading>Hello</Heading>
-    </Box>
-)
-
-export default App
+export default function App() {
+  return (
+    <div>
+      <Home />
+    </div>
+  );
+}
