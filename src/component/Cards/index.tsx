@@ -28,51 +28,48 @@ const Cards: React.FC<CardsProps> = ({ coin }) => {
         padding: 5,
       }}
     >
-      <Flex
-        flexDirection='column'
-      >
+      <Flex flexDirection="column">
         <Text
+          alignSelf="center"
           fontSize={22}
           fontWeight={900}
           fontFamily="serif"
-          color="secondary.600"
+          color="secondary.500"
         >
           {coin.symbol}
         </Text>
-        <Flex
-          justifyContent='space-evenly'
-        >
+        <Flex justifyContent="space-evenly" fontSize={20} fontWeight={500}>
           <Text>{coin.name}</Text>
           <Text>Rank: {coin.rank}</Text>
         </Flex>
-        <Box style={{ flexDirection: "row" }}>
-          <Box>
-            <Text>Percent change 1h:</Text>
+        <Flex fontSize={10} justifyContent="space-evenly">
+          <Flex flexDirection="column">
+            <Text fontWeight={600}>Percent change 1h:</Text>
             <Text>{coin.percent_change_1h}</Text>
-          </Box>
-          <Box>
-            <Text>Percent change 24h:</Text>
+          </Flex>
+          <Flex flexDirection="column">
+            <Text fontWeight={600}>Percent change 24h:</Text>
             <Text>{coin.percent_change_24h}</Text>
-          </Box>
-          <Box>
-            <Text>Percent change 7d:</Text>
+          </Flex>
+          <Flex flexDirection="column">
+            <Text fontWeight={600}>Percent change 7d:</Text>
             <Text>{coin.percent_change_7d}</Text>
-          </Box>
-        </Box>
-        <Box style={{ flexDirection: "row" }}>
-          <Text>{coin.price_usd}</Text>
-          <Text>{coin.price_btc}</Text>
-          <Text>{coin.market_cap_usd}</Text>
-        </Box>
-        <Box style={{ flexDirection: "row" }}>
-          <Text>{coin.volume24}</Text>
-          <Text>{coin.volume24a}</Text>
-        </Box>
-        <Box style={{ flexDirection: "row" }}>
-          <Text>{coin.csupply}</Text>
-          <Text>{coin.tsupply}</Text>
-          <Text>{coin.msupply}</Text>
-        </Box>
+          </Flex>
+        </Flex>
+        <Flex fontSize={10} justifyContent="space-evenly">
+          <Flex flexDirection="column">
+            <Text fontWeight={600}>Price USD</Text>
+            <Text>{coin.price_usd}</Text>
+          </Flex>
+          <Flex flexDirection="column">
+            <Text fontWeight={600}>Price BTC</Text>
+            <Text>{coin.price_btc}</Text>
+          </Flex>
+          <Flex flexDirection="column">
+            <Text fontWeight={600}>Market Cap USD</Text>
+            <Text>{coin.market_cap_usd}</Text>
+          </Flex>
+        </Flex>
         <Button
           onClick={() => {
             setCoin_id(coin.id);
@@ -87,7 +84,11 @@ const Cards: React.FC<CardsProps> = ({ coin }) => {
         </Button>
 
         <Modal isOpen={isOpen} onClose={onClose}>
-          <MarketsModal setTrigger={setMarketPopUp} markets={markets} coin={coin}/>
+          <MarketsModal
+            setTrigger={setMarketPopUp}
+            markets={markets}
+            coin={coin}
+          />
         </Modal>
       </Flex>
     </Card>
