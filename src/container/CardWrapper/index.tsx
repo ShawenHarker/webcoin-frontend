@@ -7,7 +7,6 @@ const Get_Coins = gql`
   {
     data {
       id
-      nameid
       symbol
       name
       rank
@@ -17,9 +16,6 @@ const Get_Coins = gql`
       percent_change_7d
       price_btc
       market_cap_usd
-      csupply
-      tsupply
-      msupply
     }
   }
 `;
