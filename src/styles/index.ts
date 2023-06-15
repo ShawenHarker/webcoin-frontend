@@ -4,7 +4,7 @@ const cardStyle = {
   p: 4,
   mx: 2,
   mt: 4,
-  maxWidth: 375,
+  maxWidth: 385,
   height: 240,
   borderRadius: 20
 };
@@ -30,9 +30,16 @@ const button = {
   },
 };
 
+const tableHeaderStyle = {
+  color: "primary.400",
+  fontSize: 16,
+  pb: 4 
+}
+
 export const styles = {
   cardStyle,
   flexRowStyle,
   fontStyle,
-  button
+  button,
+  tableHeaderStyle
 };

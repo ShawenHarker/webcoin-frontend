@@ -9,10 +9,11 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import { theme } from "../../theme";
+import { styles } from "../../styles/index";
 
 interface PopUpProps {
   markets: any;
-  coin: any
+  coin: any;
 }
 
 const TableLayout: React.FC<PopUpProps> = ({ markets, coin }) => {
@@ -21,30 +22,14 @@ const TableLayout: React.FC<PopUpProps> = ({ markets, coin }) => {
       <Table size="sm" variant="striped" colorScheme="purple">
         <Thead>
           <Tr>
-            <Th color="primary.500" fontSize={16}>
-              Name
-            </Th>
-            <Th color="primary.500" fontSize={16}>
-              Base
-            </Th>
-            <Th color="primary.500" fontSize={16}>
-              Quote
-            </Th>
-            <Th color="primary.500" fontSize={16}>
-              Price
-            </Th>
-            <Th color="primary.500" fontSize={16}>
-              Price USD
-            </Th>
-            <Th color="primary.500" fontSize={16}>
-              Volume
-            </Th>
-            <Th color="primary.500" fontSize={16}>
-              Volume USD
-            </Th>
-            <Th color="primary.500" fontSize={16}>
-              Time
-            </Th>
+            <Th sx={styles.tableHeaderStyle}>Name</Th>
+            <Th sx={styles.tableHeaderStyle}>Base</Th>
+            <Th sx={styles.tableHeaderStyle}>Quote</Th>
+            <Th sx={styles.tableHeaderStyle}>Price</Th>
+            <Th sx={styles.tableHeaderStyle}>Price USD</Th>
+            <Th sx={styles.tableHeaderStyle}>Volume</Th>
+            <Th sx={styles.tableHeaderStyle}>Volume USD</Th>
+            <Th sx={styles.tableHeaderStyle}>Time</Th>
           </Tr>
         </Thead>
         <Tbody>

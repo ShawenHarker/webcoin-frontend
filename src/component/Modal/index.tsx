@@ -18,7 +18,7 @@ function Modal({ children, onClose, isOpen }: Props) {
     <ChakraModal size="6xl" isOpen={isOpen} onClose={onClose} >
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader color="secondary.500" fontFamily="serif" fontWeight={600}>
+        <ModalHeader fontSize={26} color="secondary.500" fontFamily="serif" fontWeight={900}>
           Currency Markets
         </ModalHeader>
         <ModalCloseButton />

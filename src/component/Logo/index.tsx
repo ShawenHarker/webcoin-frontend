@@ -3,11 +3,15 @@ import { Box, Container, Image, Text } from "@chakra-ui/react";
 
 export default function Logo() {
   return (
-    <Container m="auto">
-      <Box width={450} mb={0}>
+    <Container >
+      <Box width={{ base: "200px", md: "350px", lg: "456px" }} mb={0}>
         <Image src={require("../../assets/images/WebCoin.png")} alt="Logo" />
       </Box>
-      <Text fontSize={12} fontWeight={700} mr={50} mt={0}>
+      <Text
+        fontSize={{ base: "7.5px", md: "10px", lg: "12px" }}
+        fontWeight={700}
+        mt={0}
+      >
         THE WORLD'S LEADING CYPTOCURRENCY UPDATER
       </Text>
     </Container>
