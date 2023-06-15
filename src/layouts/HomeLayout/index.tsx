@@ -5,7 +5,7 @@ import CardWrapper from "../../container/CardWrapper/index";
 
 export default function Home() {
   return (
-    <Container p={2} m="auto" maxW="4xl" textAlign="center">
+    <Container p={2} maxW="full" textAlign="center" >
         <Header />
         <CardWrapper />
     </Container>

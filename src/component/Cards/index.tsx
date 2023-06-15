@@ -35,13 +35,13 @@ const Cards: React.FC<CardsProps> = ({ coin }) => {
         <Flex
           justifyContent="space-evenly"
           fontSize={20}
-          fontWeight={500}
+          fontWeight={600}
           mt="0px"
         >
-          <Text color="primary.500" fontFamily="serif">
+          <Text color="primary.400" fontFamily="serif">
             {coin.symbol}
           </Text>
-          <Text color="primary.500" fontFamily="serif">
+          <Text color="primary.400" fontFamily="serif">
             Rank: {coin.rank}
           </Text>
         </Flex>

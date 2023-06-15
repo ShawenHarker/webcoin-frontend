@@ -3,13 +3,10 @@ import { theme } from "../theme";
 const cardStyle = {
   p: 4,
   mx: 2,
-  my: 5,
+  mt: 4,
   maxWidth: 375,
-  borderRadius: 20,
-  ":hover": {
-    maxWidth: 395,
-    height: 250
-  },
+  height: 240,
+  borderRadius: 20
 };
 
 const flexRowStyle = {

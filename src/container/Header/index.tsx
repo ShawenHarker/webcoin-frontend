@@ -4,7 +4,7 @@ import { Container } from "@chakra-ui/react";
 
 export default function Header() {
   return (
-    <Container as="header" maxW='4xl' py={7}>
+    <Container as="header" maxW='full' pt={7} pb={4} mb={0}>
       <Logo />
     </Container>
   );
