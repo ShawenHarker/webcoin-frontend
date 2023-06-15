@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button, Card, Flex, Text, useDisclosure } from "@chakra-ui/react";
-import MarketsModal from "../Table";
+import TableLayout from "../Table";
 import Modal from "../Modal";
+import { styles } from "../../styles";
 interface CardsProps {
   coin: any;
 }
@@ -20,51 +21,55 @@ const Cards: React.FC<CardsProps> = ({ coin }) => {
   }, [coin_id]);
 
   return (
-    <Card
-      style={{
-        margin: 15,
-        padding: 5,
-      }}
-    >
+    <Card sx={styles.cardStyle}>
       <Flex flexDirection="column">
         <Text
           alignSelf="center"
-          fontSize={22}
+          fontSize={26}
           fontWeight={900}
           fontFamily="serif"
           color="secondary.500"
         >
-          {coin.symbol}
+          {coin.name}
         </Text>
-        <Flex justifyContent="space-evenly" fontSize={20} fontWeight={500}>
-          <Text>{coin.name}</Text>
-          <Text>Rank: {coin.rank}</Text>
+        <Flex
+          justifyContent="space-evenly"
+          fontSize={20}
+          fontWeight={600}
+          mt="0px"
+        >
+          <Text color="primary.400" fontFamily="serif">
+            {coin.symbol}
+          </Text>
+          <Text color="primary.400" fontFamily="serif">
+            Rank: {coin.rank}
+          </Text>
         </Flex>
-        <Flex fontSize={10} justifyContent="space-evenly">
+        <Flex sx={styles.flexRowStyle}>
           <Flex flexDirection="column">
-            <Text fontWeight={600}>Percent change 1h:</Text>
+            <Text sx={styles.fontStyle}>Percent change 1h:</Text>
             <Text>{coin.percent_change_1h}</Text>
           </Flex>
           <Flex flexDirection="column">
-            <Text fontWeight={600}>Percent change 24h:</Text>
+            <Text sx={styles.fontStyle}>Percent change 24h:</Text>
             <Text>{coin.percent_change_24h}</Text>
           </Flex>
           <Flex flexDirection="column">
-            <Text fontWeight={600}>Percent change 7d:</Text>
+            <Text sx={styles.fontStyle}>Percent change 7d:</Text>
             <Text>{coin.percent_change_7d}</Text>
           </Flex>
         </Flex>
-        <Flex fontSize={10} justifyContent="space-evenly">
+        <Flex sx={styles.flexRowStyle} alignContent="space-between">
           <Flex flexDirection="column">
-            <Text fontWeight={600}>Price USD</Text>
+            <Text sx={styles.fontStyle}>Price USD</Text>
             <Text>{coin.price_usd}</Text>
           </Flex>
           <Flex flexDirection="column">
-            <Text fontWeight={600}>Price BTC</Text>
+            <Text sx={styles.fontStyle}>Price BTC</Text>
             <Text>{coin.price_btc}</Text>
           </Flex>
           <Flex flexDirection="column">
-            <Text fontWeight={600}>Market Cap USD</Text>
+            <Text sx={styles.fontStyle}>Market Cap USD</Text>
             <Text>{coin.market_cap_usd}</Text>
           </Flex>
         </Flex>
@@ -73,19 +78,12 @@ const Cards: React.FC<CardsProps> = ({ coin }) => {
             setCoin_id(coin.id);
             onOpen();
           }}
-          style={{
-            backgroundColor: "#6258de",
-            color: "#ff9100",
-          }}
+          sx={styles.button}
         >
           Markets
         </Button>
-
         <Modal isOpen={isOpen} onClose={onClose}>
-          <MarketsModal
-            markets={markets}
-            coin={coin}
-          />
+          <TableLayout markets={markets} coin={coin} />
         </Modal>
       </Flex>
     </Card>

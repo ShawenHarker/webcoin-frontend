@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useQuery, gql } from "@apollo/client";
-import { Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import Cards from "../../component/Cards";
 
 const Get_Coins = gql`
@@ -27,10 +27,10 @@ export default function CardWrapper() {
   if (error) return <Text>Error : {error.message}</Text>;
 
   return (
-    <div>
+    <Flex flexWrap="wrap" justifyContent="space-evenly">
       {data ? data.data.map((coin: any) => {
-        return <Cards coin={coin} key={coin.id} />;
+        return <Cards coin={coin} key={coin.id} />
       }): null}
-    </div>
+    </Flex>
   )
 }
