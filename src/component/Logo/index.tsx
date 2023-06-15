@@ -1,27 +1,15 @@
 import * as React from "react";
-import { Box, Image, Text } from "@chakra-ui/react";
-import { theme } from "../../theme";
+import { Box, Container, Image, Text } from "@chakra-ui/react";
 
 export default function Logo() {
   return (
-    <Box>
-      <Box width={80}>
-        <Image
-          src={require("../../assets/images/WebCoin.png")}
-          alt="Logo"
-          position="relative"
-        />
+    <Container m="auto">
+      <Box width={450} mb={0}>
+        <Image src={require("../../assets/images/WebCoin.png")} alt="Logo" />
       </Box>
-      <Text 
-        position="absolute" 
-        top={90}
-        left={115}
-        fontSize='7.5px'
-        fontWeight={600}
-        
-      >
-        THE WORLD'S LEADING CYPTOCURRENCY UPDATER 
+      <Text fontSize={12} fontWeight={700} mr={50} mt={0}>
+        THE WORLD'S LEADING CYPTOCURRENCY UPDATER
       </Text>
-    </Box>
+    </Container>
   );
 }

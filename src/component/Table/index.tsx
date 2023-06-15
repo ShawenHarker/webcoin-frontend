@@ -15,7 +15,7 @@ interface PopUpProps {
   coin: any
 }
 
-const MarketsModal: React.FC<PopUpProps> = ({ markets, coin }) => {
+const TableLayout: React.FC<PopUpProps> = ({ markets, coin }) => {
   return (
     <TableContainer pb={5}>
       <Table size="sm" variant="striped" colorScheme="purple">
@@ -66,4 +66,4 @@ const MarketsModal: React.FC<PopUpProps> = ({ markets, coin }) => {
   );
 };
 
-export default MarketsModal;
+export default TableLayout;
