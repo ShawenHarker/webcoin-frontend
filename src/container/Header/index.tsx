@@ -1,11 +1,11 @@
 import * as React from "react";
-import { Box } from "@chakra-ui/react";
 import Logo from "../../component/Logo";
+import { Container } from "@chakra-ui/react";
 
 export default function Header() {
   return (
-    <Box>
+    <Container as="header" maxW='full' pt={7} pb={4} mb={0}>
       <Logo />
-    </Box>
+    </Container>
   );
 }
