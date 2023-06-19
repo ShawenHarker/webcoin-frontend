@@ -5,7 +5,6 @@ const cardStyle = {
   mx: 2,
   mt: 4,
   maxWidth: 385,
-  height: 240,
   borderRadius: 20
 };
 
