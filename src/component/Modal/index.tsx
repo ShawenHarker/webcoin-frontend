@@ -13,7 +13,8 @@ type Props = {
   isOpen: boolean;
   onClose: () => void;
 };
-function Modal({ children, onClose, isOpen }: Props) {
+
+const Modal = ({ children, onClose, isOpen }: Props) => {
   return (
     <ChakraModal size="6xl" isOpen={isOpen} onClose={onClose} >
       <ModalOverlay />

@@ -12,8 +12,19 @@ import { theme } from "../../theme";
 import { styles } from "../../styles/index";
 
 interface PopUpProps {
-  markets: any;
-  coin: any;
+  markets: {
+    name: string;
+    base: string;
+    quote: string;
+    price: number;
+    price_usd: number;
+    volume: number;
+    volume_usd: number;
+    time: number;
+  }[];
+  coin: {
+    id: string;
+  };
 }
 
 const TableLayout: React.FC<PopUpProps> = ({ markets, coin }) => {
@@ -33,7 +44,7 @@ const TableLayout: React.FC<PopUpProps> = ({ markets, coin }) => {
           </Tr>
         </Thead>
         <Tbody>
-          {markets.map((market: any) => (
+          {markets.map((market) => (
             <Tr key={coin.id}>
               <Td fontSize={10}>{market.name}</Td>
               <Td fontSize={10}>{market.base}</Td>
