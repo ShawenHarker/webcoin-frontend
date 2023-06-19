@@ -1,8 +1,9 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery, gql } from "@apollo/client";
-import { Flex, Spinner, Text } from "@chakra-ui/react";
+import { Button, Flex, Spinner, Text } from "@chakra-ui/react";
 import Cards from "../../component/Cards";
 import { theme } from "../../theme";
+import { styles } from "../../styles/index";
 
 const Get_Coins = gql`
   {
@@ -23,15 +24,50 @@ const Get_Coins = gql`
 
 export default function CardWrapper() {
   const { loading, error, data } = useQuery(Get_Coins);
+  const [hiddenCoins, setHiddenCoins] = useState<string[]>([]);
+  React.useEffect(() => {
+    console.log("hidden", hiddenCoins);
+  }, [hiddenCoins]);
 
-  if (loading) return <Spinner color="primary.400"/>;
-  if (error) return <Text>Error : {error.message}</Text>;
+  const hiddenCoinsHandler = (coin: string) => {
+    setHiddenCoins((prevCoins: string[]) => {
+      if (!prevCoins.includes(coin)) {
+        return [...prevCoins, coin];
+      }
+      return prevCoins;
+    });
+  };
+
+  if (loading) return <Spinner color="primary.400" />;
+  if (error) return <Text>Error: {error.message}</Text>;
+
+  const visibleCoins = data?.data.filter(
+    (coin: any) => !hiddenCoins.includes(coin.id)
+  );
 
   return (
-    <Flex flexWrap="wrap" justifyContent="space-evenly">
-      {data ? data.data.map((coin: any) => {
-        return <Cards coin={coin} key={coin.id} />
-      }): null}
+    <Flex flexDir="column">
+      <Button
+        onClick={() => setHiddenCoins([])}
+        sx={styles.button}
+        width={["100px", "10%"]}
+        p={5}
+        alignSelf="flex-end"
+        right={["30px", "55px"]}
+      >
+        Unhide all
+      </Button>
+      <Flex flexWrap="wrap" justifyContent="space-evenly">
+        {visibleCoins
+          ? visibleCoins.map((coin: any) => (
+              <Cards
+                coin={coin}
+                key={coin.id}
+                hiddenCoinsHandler={hiddenCoinsHandler}
+              />
+            ))
+          : null}
+      </Flex>
     </Flex>
-  )
+  );
 }
