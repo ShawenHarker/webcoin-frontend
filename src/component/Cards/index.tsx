@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Card, Flex, Text, useDisclosure } from "@chakra-ui/react";
+import { Box, Button, Card, Flex, Text, useDisclosure } from "@chakra-ui/react";
 import TableLayout from "../Table";
 import Modal from "../Modal";
 import { styles } from "../../styles";
@@ -17,9 +17,10 @@ interface CardsProps {
     price_btc: string;
     market_cap_usd: string;
   };
+  hiddenCoinsHandler: (coin: string) => void;
 }
 
-const Cards: React.FC<CardsProps> = ({ coin }) => {
+const Cards: React.FC<CardsProps> = ({ coin, hiddenCoinsHandler }) => {
   const [markets, setMarkets] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [error, setError] = useState({});
@@ -97,6 +98,17 @@ const Cards: React.FC<CardsProps> = ({ coin }) => {
         <Modal isOpen={isOpen} onClose={onClose}>
           <TableLayout markets={markets} coin={coin} />
         </Modal>
+        <Box
+          onClick={() => hiddenCoinsHandler(coin.id)}
+          mt={2}
+          width={8}
+          alignSelf="center"
+          cursor="pointer"
+        >
+          <Text fontSize={10} color="red">
+            Hide
+          </Text>
+        </Box>
       </Flex>
     </Card>
   );
