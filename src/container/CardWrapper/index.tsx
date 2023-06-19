@@ -1,7 +1,8 @@
 import * as React from "react";
 import { useQuery, gql } from "@apollo/client";
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Spinner, Text } from "@chakra-ui/react";
 import Cards from "../../component/Cards";
+import { theme } from "../../theme";
 
 const Get_Coins = gql`
   {
@@ -23,7 +24,7 @@ const Get_Coins = gql`
 export default function CardWrapper() {
   const { loading, error, data } = useQuery(Get_Coins);
 
-  if (loading) return <Text>Loading...</Text>;
+  if (loading) return <Spinner color="primary.400"/>;
   if (error) return <Text>Error : {error.message}</Text>;
 
   return (

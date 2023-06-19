@@ -4,7 +4,19 @@ import TableLayout from "../Table";
 import Modal from "../Modal";
 import { styles } from "../../styles";
 interface CardsProps {
-  coin: any;
+  coin: {
+    id: string;
+    nameid: string;
+    symbol: string;
+    name: string;
+    rank: number;
+    price_usd: string;
+    percent_change_1h: string;
+    percent_change_24h: string;
+    percent_change_7d: string;
+    price_btc: string;
+    market_cap_usd: string;
+  };
 }
 
 const Cards: React.FC<CardsProps> = ({ coin }) => {
