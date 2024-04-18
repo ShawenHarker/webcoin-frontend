@@ -2,6 +2,7 @@
 ## Discription
 
 WebCoin is a website that display all of the latest data of web 3 currencies using [CoinLore](https://www.coinlore.com/cryptocurrency-data-api) as it's API provider.
+The loading of the web page may take a bit longer than expected as it is hosted on a free service. This purely used to showcase my skills using data from an API and integrating it into a web app.
 
 ### How to get started on the project.
 
