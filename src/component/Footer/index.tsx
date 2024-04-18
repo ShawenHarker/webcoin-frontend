@@ -18,7 +18,7 @@ export default function Footer () {
       <Text>
         <span 
           fontWeight={900}
-          color="red"
+          color="#FF0000"
           >
           NB!!!
         </span>
