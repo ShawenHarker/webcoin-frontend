@@ -16,10 +16,7 @@ export default function Footer () {
         </Link>{" "} and is only used as mock data for training purposes.
       </Text>
       <Text>
-        <span 
-          fontWeight={900}
-          color={#FF0000}
-          >
+        <span>
           NB!!!
         </span>
         The loading of the web page may take a bit longer than expected as it is hosted on a free service. This purely used to showcase my skills using data from an API and integrating it into a web app.
